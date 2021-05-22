@@ -20,7 +20,7 @@ font_size = int(y_res//100) * 10
 camera = PiCamera()
 camera.resolution = (x_res, y_res)
 
-print("RPi started taking photos for your timelapse at: " + str(datetime.datetime.now()))
+print("RPi started taking photos for your timelapse at: " + str(datetime.datetime.now()), flush=True)
 
 # infinte loop
 while(True):
@@ -55,11 +55,11 @@ while(True):
             
             # Every 5 minutes log the progress (when running from the console, it helps you know it's still running without spamming the console)
             if(i%(photos_per_min * 5) == 0):
-                print('Saving image number: ', file_name)
+                print('Saving image number: ', file_name, flush=True)
                 
             i += 1 # increment i
             
-        print("End Of the Hour")
+        print("End Of the Hour", flush=True)
         
-    print("End Of the Day")
+    print("End Of the Day", flush=True)
     
