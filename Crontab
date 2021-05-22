@@ -1,0 +1,5 @@
+
+sudo crontab -e
+
+@reboot nohup sudo -b python /home/pi/hourly_timelapse_images.py >/dev/null 2>&1 &
+@reboot nohup sudo -b python /home/pi/hourly_timelapse_video.py >/dev/null 2>&1 &
