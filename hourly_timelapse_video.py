@@ -28,10 +28,10 @@ while(True):
     # alternative sleep time: 60 seconds times the number of minutes left in the hour, plus 100 seconds
     sleep_time = 60 * (60 - datetime.datetime.now().minute) + 100
 
-    print("Queued to make timelapse.")
+    print("Queued to make timelapse.", flush=True)
     # Now I need to make it wait more than an hour so that all the files will be there before I start.
     sleep(sleep_time)
-    print("Sleep completed, starting to make timelapse.")
+    print("Sleep completed, starting to make timelapse.", flush=True)
 
     # make sure the output folders exist
     video_folder = '/home/pi/Videos/' + str(today) + '/' + str(hour) + '/'
@@ -45,20 +45,20 @@ while(True):
             os.makedirs(level_folder)
     
     # Create the Time lapse videos for the hours
-    print("Please standby as your timelapse video is created.")
+    print("Please standby as your timelapse video is created.", flush=True)
     for j in range(timelapse_levels):
         sleep(5) # sleep 5 seconds just to be sure that everything is ready.         
         level_folder = video_folder + 'level_'+str(j)    
         # The system command to have ffmpeg make the video
         command = 'ffmpeg -r {} -f image2 -s {}x{} -nostats -loglevel 0 -pattern_type glob -i "{}/*.jpg" -vcodec libx264 -crf 25  -pix_fmt yuv420p {}/TimeLapse_Level_{}_{}_hour_{}.mp4'.format(fps, x_res, y_res, hour_folder_name, level_folder, str(j), str(today), str(hour))
-        print('Running Command: ', command)       
+        print('Running Command: ', command, flush=True)       
         
         perf_time = time.perf_counter()
 
         system(command)
-        print('Timelapse video is complete. Video saved in ', level_folder)
+        print('Timelapse video is complete. Video saved in ', level_folder, flush=True)
         
-        print('Timelapse of video took: ', str(time.perf_counter() - perf_time))
+        print('Timelapse of video took: ', str(time.perf_counter() - perf_time), flush=True)
         perf_time = time.perf_counter()
 
         for i in range(numphotos):
@@ -70,16 +70,16 @@ while(True):
                     #print('Removing File with command: ', command)
                     system(command)
         
-        print('Clean out files for next level took: ', str(time.perf_counter() - perf_time))
+        print('Clean out files for next level took: ', str(time.perf_counter() - perf_time), flush=True)
 
     clear_folder = 'rm -r ' + hour_folder_name
-    print('Clearing folder using command: ', clear_folder)      
+    print('Clearing folder using command: ', clear_folder, flush=True)      
         
     perf_time = time.perf_counter()     
     
     system(clear_folder)    
-    print('Finished Removing Images Folder: ', hour_folder_name)
-    print('Cleaning up folder took: ', str(time.perf_counter() - perf_time))
+    print('Finished Removing Images Folder: ', hour_folder_name, flush=True)
+    print('Cleaning up folder took: ', str(time.perf_counter() - perf_time), flush=True)
 
     # Now to loop everything again for the next hour
 
