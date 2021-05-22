@@ -28,7 +28,7 @@ while(True):
     # alternative sleep time: 60 seconds times the number of minutes left in the hour, plus 100 seconds
     sleep_time = 60 * (60 - datetime.datetime.now().minute) + 100
 
-    print("Queued to make timelapse.", flush=True)
+    print("Queued to make timelapse at {} with delay of {} seconds.".format(datetime.datetime.now().strftime("%H:%M:%S"), str(sleep_time)), flush=True)
     # Now I need to make it wait more than an hour so that all the files will be there before I start.
     sleep(sleep_time)
     print("Sleep completed, starting to make timelapse.", flush=True)
