@@ -53,6 +53,8 @@ for j in range(timelapse_levels):
         working_date += delta_day # increment the day by 1
         i+=1 # incrment i to eventually exit the loop
 
+    working_date -= delta_day #decrement from the very last loop
+    
     # debugging
     print('List of timelapses: ', list_of_timelapses)
     
