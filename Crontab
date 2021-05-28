@@ -3,9 +3,12 @@
 
 @reboot nohup sudo -b python3 /home/pi/hourly_timelapse_images.py >/dev/null 2>&1 &
 @reboot nohup sudo -b python3 /home/pi/hourly_timelapse_video.py >/dev/null 2>&1 &
+30 7 * * * sudo python3 /home/pi/combine_timelapse_video.py >/dev/null 2>&1 &
+
 # Alternate for file Debugging
 #@reboot nohup sudo python3 /home/pi/hourly_timelapse_images.py > /home/pi/timelapse_images_output.txt 2>&1 &
 #@reboot nohup sudo python3 /home/pi/hourly_timelapse_video.py > /home/pi/timelapse_video_output.txt 2>&1 &
+#30 7 * * * sudo python3 /home/pi/combine_timelapse_video.py > /home/pi/timelapse_combiner_output.txt 2>&1 &
 
 30 8 * * * sudo reboot
 30 21 * * * sudo reboot
