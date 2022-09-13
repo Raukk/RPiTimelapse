@@ -67,6 +67,13 @@ You will need to edit it to give it the correct Date and Hour to run the process
 I do this with `sudo nano manual_hourly_timelapse_video.py` and then alter the value of the variable `hour` and if needed, the value of `today` to the desired day. 
 
 
+### Installed Packages
+
+`sudo apt update`
+`sudo apt install -y ffmpeg`
+`sudo -H apt install python3-picamera`
+`sudo apt-get install imagemagick python3-imagick`
+
 ### Other Uses
 
 If you wish to use this for other things like night sky time-lapses, you will probably want to tweak it quite a bit.
